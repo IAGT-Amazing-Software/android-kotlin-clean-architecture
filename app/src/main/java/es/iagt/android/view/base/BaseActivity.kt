@@ -22,7 +22,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        applicationComponent.inject(this)
+        applicationComponent.inject(this)
     }
 
     protected val applicationComponent: ApplicationComponent

@@ -21,12 +21,19 @@
         <activity android:name=".view.main.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".view.slider.SliderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".view.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
 
     </application>
 

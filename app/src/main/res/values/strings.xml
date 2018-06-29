@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">IAGT</string>
     <string name="retry">Retry</string>
+    <string name="begin">Empezar</string>
+    <string name="next">Siguiente</string>
+    <string name="jump">Saltar</string>
 
 </resources>

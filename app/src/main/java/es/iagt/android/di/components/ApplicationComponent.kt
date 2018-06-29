@@ -7,6 +7,7 @@ import es.iagt.android.di.modules.ApplicationModule
 import es.iagt.android.di.modules.RepositoryModule
 import es.iagt.android.utils.Navigator
 import es.iagt.android.utils.SharedPreferencesManager
+import es.iagt.android.view.base.BaseActivity
 import es.iagt.android.view.base.BaseFragment
 import es.iagt.android.view.main.activities.MainActivity
 import javax.inject.Singleton
@@ -20,6 +21,7 @@ interface ApplicationComponent {
 
     //inject activities
     fun inject(mainActivity: MainActivity)
+    fun inject(baseActivity: BaseActivity)
 
     //inject fragments
     fun inject(baseFragment: BaseFragment)

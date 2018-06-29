@@ -1,5 +1,6 @@
 package es.iagt.android.utils
 
+import es.iagt.android.constants.AppConstants
 import java.util.*
 
 
@@ -49,6 +50,14 @@ class SharedPreferencesManager(private val preferencesUtils: PreferencesUtils) {
 
     fun getInteger(key: String): Int? {
         return getData(key, Int::class.java)
+    }
+
+    fun isFirstInstall(): Boolean? {
+        return getBoolean(AppConstants.FIRST_INSTALLATION)
+    }
+
+    fun setFirstInstall() {
+        setDataPersist(AppConstants.FIRST_INSTALLATION, true)
     }
 
 

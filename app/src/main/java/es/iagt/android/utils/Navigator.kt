@@ -6,6 +6,7 @@ import es.iagt.android.constants.AppConstants
 import es.iagt.android.view.base.BaseActivity
 import es.iagt.android.view.base.BaseFragment
 import es.iagt.android.view.main.activities.MainActivity
+import es.iagt.android.view.splash.SplashActivity
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -46,6 +47,11 @@ constructor() {
 
     fun goToMain(activity: BaseActivity) {
         activity.startActivity(Intent(activity, MainActivity::class.java))
+        activity.finish()
+    }
+
+    fun goToSplash(activity: BaseActivity) {
+        activity.startActivity(Intent(activity, SplashActivity::class.java))
         activity.finish()
     }
 
