@@ -1,0 +1,28 @@
+apply from: rootProject.file('dependencies.gradle')
+
+detekt {
+    version = "${libraries.detekt}"
+    profile("main") {
+        input = "$projectDir"
+        config = "$project.rootDir/detekt-config.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+        output = "$project.buildDir/reports/detekt.xml"
+        parallel = true
+        disableDefaultRuleSets = false
+    }
+}
+
+configurations {
+    detekt {}
+}
+
+task detekt(type: JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+    def input = "$projectDir"
+    def output = "${project.buildDir}/reports/detekt.xml"
+    def config = "$project.rootDir/detekt-config.yml"
+    def filters = ".*test.*"
+    def params = [ '-i', input, '-c', config, '-f', filters, '-o', output]
+    args(params)
+}

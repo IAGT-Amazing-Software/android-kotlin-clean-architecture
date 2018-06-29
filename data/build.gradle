@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply from: '../config/quality/quality.gradle'
+
+apply from: "../detekt.gradle"
+
+def cfg = rootProject.ext.configuration
+def libs = rootProject.ext.libraries
+
+android {
+    compileSdkVersion cfg.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+preBuild.dependsOn detekt
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:${libs.appcompat}"
+
+//    for testing:
+//    testImplementation "junit:junit:${libs.junit}"
+//    testImplementation "org.mockito:mockito-core:${libs.mockito}"
+//    androidTestImplementation "org.mockito:mockito-android:${libs.mockito}"
+//    androidTestImplementation "com.android.support.test:runner:${libs.testrunner}"
+//    androidTestImplementation "com.android.support.test.espresso:espresso-core:${libs.espresso}"
+
+    implementation "com.google.dagger:dagger:${libs.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${libs.dagger}"
+
+    implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
+
+    implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
+    implementation "com.squareup.okhttp:okhttp:${libs.okhttp}"
+    implementation "com.squareup.okhttp:okhttp-urlconnection:${libs.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${libs.interceptor}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    detekt "io.gitlab.arturbosch.detekt:detekt-cli:${libs.detekt}"
+
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+
+
+}
+repositories {
+    mavenCentral()
+}
