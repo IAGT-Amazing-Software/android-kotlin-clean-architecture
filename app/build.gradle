@@ -143,8 +143,6 @@ dependencies {
 repositories {
     mavenCentral()
     jcenter()
-//    fabric configuration:
-//    maven { url 'https://maven.fabric.io/public' }
 }
 
 def getDate() {
