@@ -1,10 +1,11 @@
-package es.iagt.android.view.slider
+package es.iagt.android.view.slider.activities
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.View
 import es.iagt.android.R
 import es.iagt.android.view.base.BaseActivity
+import es.iagt.android.view.slider.adapters.SliderAdapter
 import kotlinx.android.synthetic.main.activity_slider.*
 
 class SliderActivity : BaseActivity() {

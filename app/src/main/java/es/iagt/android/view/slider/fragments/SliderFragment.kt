@@ -1,4 +1,4 @@
-package es.iagt.android.view.slider
+package es.iagt.android.view.slider.fragments
 
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle

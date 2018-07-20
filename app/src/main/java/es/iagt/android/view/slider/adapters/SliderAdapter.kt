@@ -1,10 +1,11 @@
-package es.iagt.android.view.slider
+package es.iagt.android.view.slider.adapters
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import es.iagt.android.view.slider.fragments.SliderFragment
 
 class SliderAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 

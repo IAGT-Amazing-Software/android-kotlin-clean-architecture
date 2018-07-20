@@ -22,7 +22,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".view.slider.SliderActivity"
+        <activity android:name=".view.slider.activities.SliderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
