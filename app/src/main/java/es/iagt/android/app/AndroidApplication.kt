@@ -13,33 +13,23 @@ import io.fabric.sdk.android.Fabric
 
 class AndroidApplication : MultiDexApplication() {
 
+    companion object {
+        lateinit var appContext: Context
+        lateinit var applicationComponent: ApplicationComponent
+    }
+
     init {
-        myInstance = this
-    }
-
-    lateinit var applicationComponent: ApplicationComponent
-
-    override fun onCreate() {
-        super.onCreate()
-        Fabric.with(this, Crashlytics())
-        initializeInjector()
-        applicationComponent.inject(this)
-    }
-
-    private fun initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
+        appContext = this
+        applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
                 .repositoryModule(RepositoryModule(this))
                 .build()
     }
 
-    companion object {
-
-        private var myInstance: AndroidApplication? = null
-
-        fun getApplicationContext(): Context {
-            return myInstance!!.applicationContext
-        }
-
+    override fun onCreate() {
+        super.onCreate()
+        Fabric.with(this, Crashlytics())
+        applicationComponent.inject(this)
     }
+
 }

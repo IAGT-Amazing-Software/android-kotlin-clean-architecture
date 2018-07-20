@@ -25,8 +25,7 @@ abstract class BaseActivity : AppCompatActivity() {
         applicationComponent.inject(this)
     }
 
-    protected val applicationComponent: ApplicationComponent
-        get() = (application as AndroidApplication).applicationComponent
+    protected val applicationComponent = AndroidApplication.Companion.applicationComponent
 
     open fun replaceFragment(containerViewId: Int, fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()

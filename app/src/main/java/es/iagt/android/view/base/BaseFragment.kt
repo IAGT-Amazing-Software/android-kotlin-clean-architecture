@@ -20,8 +20,7 @@ open class BaseFragment : Fragment() {
     @Inject
     lateinit var sharedPreferencesManager: SharedPreferencesManager
 
-    protected val applicationComponent: ApplicationComponent
-        get() = (activity!!.application as AndroidApplication).applicationComponent
+    protected val applicationComponent = AndroidApplication.Companion.applicationComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
