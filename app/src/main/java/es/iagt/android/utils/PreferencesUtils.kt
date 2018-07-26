@@ -25,7 +25,7 @@ constructor(private var mSharedPreferences: SharedPreferences) {
 
             val ed = mSharedPreferences.edit()
             if (o is String) {
-                ed.putString(key, o as String?)
+                ed.putString(key, o as String?).apply()
             } else if (o is Boolean) {
                 ed.putBoolean(key, (o as Boolean?)!!).apply()
             } else if (o is Int) {
